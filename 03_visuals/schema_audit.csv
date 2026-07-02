@@ -1,0 +1,9 @@
+column,dtype,missing,unique,sample
+student_id,object,0,8,2026CS001
+name,object,0,8,Aditi
+department,object,0,3,Computer Engineering
+attendance_pct,int64,0,8,92
+diary_entries,int64,0,8,12
+tasks_completed,int64,0,7,8
+assignment_score,int64,0,8,84
+lab_score,int64,0,8,88

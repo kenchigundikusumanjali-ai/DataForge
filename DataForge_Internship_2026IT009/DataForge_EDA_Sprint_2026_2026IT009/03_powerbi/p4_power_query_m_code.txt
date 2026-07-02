@@ -1,0 +1,7 @@
+let
+    Source = Csv.Document(File.Contents("C:\Users\kench\Desktop\week_2_3_exam_student_signals.csv"),[Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"student_id", type text}, {"name", type text}, {"department", type text}, {"attendance_pct", Int64.Type}, {"diary_entries", Int64.Type}, {"tasks_completed", Int64.Type}, {"assignment_score", Int64.Type}, {"lab_score", Int64.Type}}),
+    #"Added Conditional Column" = Table.AddColumn(#"Changed Type", "Performance_Status", each if [assignment_score] >= 80 then "Excellent" else "Average")
+in
+    #"Added Conditional Column"
